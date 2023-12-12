@@ -5,8 +5,8 @@ import { AppThemeProvider } from "./shared/contexts/ThemeContext";
 
 export const App = () => {
   return (
-      <AppThemeProvider>
-        <BrowserRouter>
+      <AppThemeProvider> 
+            <BrowserRouter>
         <AppRoutes/>
         </BrowserRouter>
       </AppThemeProvider>
