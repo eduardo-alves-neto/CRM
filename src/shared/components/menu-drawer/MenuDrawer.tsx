@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Button,
   Divider,
   Drawer,
   Icon,
@@ -14,20 +15,56 @@ import {
 import { width } from "@mui/system";
 import React from "react";
 import { useDrawerContext } from "../../contexts";
+import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 
+interface IListItemLink {
+  children?: React.ReactNode;
+  label: string;
+  icon: string;
+  to: string;
+  onClick: (() => void) | undefined;
+}
 interface IMenuDrawerProps {
   children: React.ReactNode;
 }
 
+const ListItemLink: React.FC<IListItemLink> = ({
+  to,
+  icon,
+  label,
+  onClick,
+}) => {
+  const navigate = useNavigate();
+
+  const resolvedPath = useResolvedPath(to);
+  const match = useMatch({path:resolvedPath.pathname, end: false})
+
+  const handleClick = () => {
+    navigate(to);
+    onClick?.();
+  };
+  return (
+    <ListItemButton selected={!!match} onClick={handleClick}>
+      <ListItemIcon>
+        <Icon>{icon}</Icon>
+      </ListItemIcon>
+      <ListItemText primary={label} />
+    </ListItemButton>
+  );
+};
+
 export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
   const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
-  const {isDrawerOpen, toggleDrawerOpen} = useDrawerContext();
-
+  const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
 
   return (
     <>
-      <Drawer  open={isDrawerOpen} variant={smDown ? "temporary": "permanent"} onClose={toggleDrawerOpen}>
+      <Drawer
+        open={isDrawerOpen}
+        variant={smDown ? "temporary" : "permanent"}
+        onClose={toggleDrawerOpen}
+      >
         <Box
           width={theme.spacing(28)}
           height="100%"
@@ -52,18 +89,24 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
 
           <Box flex={1}>
             <List component="nav">
-              <ListItemButton>
-                <ListItemIcon>
-                  <Icon>home</Icon>
-                </ListItemIcon>
-                <ListItemText primary="Página inicial" />
-              </ListItemButton>
+              <ListItemLink
+                icon="Home"
+                label="Pagina Inicial"
+                to="/pagina-inicial"
+                onClick={smDown ? toggleDrawerOpen : undefined}
+              />
+              <ListItemLink
+                icon="Home"
+                label="TIK TOK"
+                to="/tik-tok"
+                onClick={smDown ? toggleDrawerOpen : undefined}
+              />
             </List>
           </Box>
         </Box>
       </Drawer>
 
-      <Box height="100vh" marginLeft={smDown? 0: theme.spacing(28)}>
+      <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(28)}>
         {children}
       </Box>
     </>

@@ -1,16 +1,17 @@
 import { Button } from "@mui/material";
-import { Routes , Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 import { useDrawerContext } from "../shared/contexts";
-export const AppRoutes = () =>{
-    const {toggleDrawerOpen} = useDrawerContext();
-    return (
-        <Routes>
-            <Route path="/pagina-inicial" element={<>
-            <Button variant="contained" color={"primary"} onClick={toggleDrawerOpen}>teste</Button></>}/>
+import { Home } from "../pages/Home";
+import { TikTok } from "../pages/TikTok";
+export const AppRoutes = () => {
+    
+  return (
+    <Routes>
+      <Route path="/pagina-inicial" element={<Home/>} />
 
-            <Route path="*" element={<Navigate to="/pagina-inicial"/>}/>
-
-        </Routes>
-    );
-}
+      <Route path="/tik-tok" element={<TikTok/>}/>
+      <Route path="*" element={<Navigate to="/pagina-inicial" />} />
+    </Routes>
+  );
+};
