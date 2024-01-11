@@ -66,14 +66,14 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
         onClose={toggleDrawerOpen}
       >
         <Box
-          width={theme.spacing(28)}
+          width={theme.spacing(32)}
           height="100%"
           display="flex"
           flexDirection="column"
         >
           <Box
             width="100%"
-            height={theme.spacing(20)}
+            height={theme.spacing(26)}
             display="flex"
             alignItems="center"
             justifyContent="center"
@@ -106,7 +106,7 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
         </Box>
       </Drawer>
 
-      <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(28)}>
+      <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(33)}>
         {children}
       </Box>
     </>
