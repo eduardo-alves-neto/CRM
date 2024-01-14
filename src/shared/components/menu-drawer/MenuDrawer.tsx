@@ -12,7 +12,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { width } from "@mui/system";
 import React from "react";
 import { useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
@@ -20,7 +19,7 @@ import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 interface IListItemLink {
   children?: React.ReactNode;
   label: string;
-  icon: string;
+  icon:  string| any;
   to: string;
   onClick: (() => void) | undefined;
 }
@@ -46,7 +45,7 @@ const ListItemLink: React.FC<IListItemLink> = ({
   return (
     <ListItemButton selected={!!match} onClick={handleClick}>
       <ListItemIcon>
-        <Icon>{icon}</Icon>
+       <Icon>{icon}</Icon>
       </ListItemIcon>
       <ListItemText primary={label} />
     </ListItemButton>
@@ -90,7 +89,7 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
           <Box flex={1}>
             <List component="nav">
               <ListItemLink
-                icon="Home"
+                icon='Home'
                 label="Pagina Inicial"
                 to="/pagina-inicial"
                 onClick={smDown ? toggleDrawerOpen : undefined}
