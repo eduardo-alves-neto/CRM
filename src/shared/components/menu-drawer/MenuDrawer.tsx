@@ -19,7 +19,7 @@ import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 interface IListItemLink {
   children?: React.ReactNode;
   label: string;
-  icon:  string| any;
+  icon: string | any;
   to: string;
   onClick: (() => void) | undefined;
 }
@@ -36,7 +36,7 @@ const ListItemLink: React.FC<IListItemLink> = ({
   const navigate = useNavigate();
 
   const resolvedPath = useResolvedPath(to);
-  const match = useMatch({path:resolvedPath.pathname, end: false})
+  const match = useMatch({ path: resolvedPath.pathname, end: false });
 
   const handleClick = () => {
     navigate(to);
@@ -45,7 +45,7 @@ const ListItemLink: React.FC<IListItemLink> = ({
   return (
     <ListItemButton selected={!!match} onClick={handleClick}>
       <ListItemIcon>
-       <Icon>{icon}</Icon>
+        <Icon>{icon}</Icon>
       </ListItemIcon>
       <ListItemText primary={label} />
     </ListItemButton>
@@ -89,15 +89,21 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
           <Box flex={1}>
             <List component="nav">
               <ListItemLink
-                icon='Home'
+                icon="Home"
                 label="Pagina Inicial"
                 to="/pagina-inicial"
                 onClick={smDown ? toggleDrawerOpen : undefined}
               />
               <ListItemLink
                 icon="Home"
-                label="TIK TOK"
-                to="/tik-tok"
+                label="Users"
+                to="/users"
+                onClick={smDown ? toggleDrawerOpen : undefined}
+              />
+              <ListItemLink
+                icon="Home"
+                label="Products"
+                to="/products"
                 onClick={smDown ? toggleDrawerOpen : undefined}
               />
             </List>

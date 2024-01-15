@@ -4,7 +4,7 @@ import { userTypeResponse } from './types';
 export class UserTypeServices {
   static async get(): Promise<userTypeResponse[]> {
     try {
-      const { data } = await axios.get('http://localhost:8800/'); // Certifique-se de que este é o caminho correto para a sua API.
+      const { data } = await axios.get('http://localhost:8800/users'); // Certifique-se de que este é o caminho correto para a sua API.
       return data;
     } catch (error) {
       // Adicione um tratamento de erro adequado aqui
