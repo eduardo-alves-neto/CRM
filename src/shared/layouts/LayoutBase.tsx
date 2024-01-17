@@ -34,7 +34,7 @@ export const LayoutBase: React.FC<ILayoutBase> = ({ children, title }) => {
             </Icon>
           </IconButton>
         )}
-        <Typography variant="h5">{title}</Typography>
+        <Typography variant="h3">{title}</Typography>
       </Box>
       <Box>barra de ferramentas</Box>
       <Box>{children}</Box>
