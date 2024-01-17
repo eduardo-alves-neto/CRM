@@ -5,7 +5,7 @@ export const Home = () => {
 
   return (
     <>
-      <Box>
+      <Box sx={{height:"100hv"}}>
         <h1>PAGINA INICIAL</h1>
       </Box>
     </>

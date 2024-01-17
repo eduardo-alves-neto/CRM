@@ -10,27 +10,28 @@ interface ICard {
     title: string,
     description: string,
     image?:string,
-    // children?: React.ReactNode
+    quantite?:number;
 
 }
-export const  Card: React.FC<ICard> =({title, description})=> {
+export const  Card: React.FC<ICard> =({title, description,quantite})=> {
   return (
     <Mediacard sx={{ maxWidth: 345 }}>
       <CardMedia
         sx={{ height: 140 }}
         image="/static/images/cards/contemplative-reptile.jpg"
-        title={title}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+         {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
          {description}
+         <Typography>QUANTIDADE:{quantite}</Typography>
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small">EDITAR</Button> 
+        <Button size="small">EXCLUIR</Button>
       </CardActions>
     </Mediacard>
   );

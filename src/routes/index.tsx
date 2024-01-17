@@ -1,14 +1,12 @@
-import { Button } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
-import { useDrawerContext } from "../shared/contexts";
-import { Home } from "../pages/Home";
 import Users from "../pages/users";
 import Products  from "../pages/products";
+import { Dashboard } from "../pages/dashboard/Dashboard";
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/pagina-inicial" element={<Home />} />
+      <Route path="/pagina-inicial" element={<Dashboard />} />
 
       <Route path="/users" element={<Users />} />
       

@@ -7,19 +7,24 @@ export const DarkTheme = createTheme({
       main: yellow[700],
       dark: yellow[800],
       light: yellow[500],
-      contrastText: "#ffffff",
+      contrastText: "#FFFF", // Cor do texto para o primary
     },
 
     secondary: {
       main: cyan[500],
       dark: cyan[400],
       light: cyan[300],
-      contrastText: "#ffffff",
+      contrastText: "#ffffff", // Cor do texto para o secondary
     },
 
-    background:{
-        default:'#202124',
-        paper:'#303134',
-    }
+    background: {
+      default: "#202124",
+      paper: "#303134",
+    },
+
+    text: {
+      primary: "#FFFFFF", 
+      secondary: "#FFFFFF",
+    },
   },
 });

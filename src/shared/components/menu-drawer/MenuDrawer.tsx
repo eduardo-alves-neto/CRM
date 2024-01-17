@@ -1,3 +1,4 @@
+import React, { ReactNode } from "react";
 import {
   Avatar,
   Box,
@@ -12,17 +13,18 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React from "react";
 import { useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+import { Home } from "@mui/icons-material";
 
 interface IListItemLink {
-  children?: React.ReactNode;
+  children?: ReactNode;
   label: string;
-  icon: string | any;
+  icon: React.ReactElement; 
   to: string;
-  onClick: (() => void) | undefined;
+  onClick?: () => void;
 }
+
 interface IMenuDrawerProps {
   children: React.ReactNode;
 }
@@ -42,11 +44,10 @@ const ListItemLink: React.FC<IListItemLink> = ({
     navigate(to);
     onClick?.();
   };
+
   return (
     <ListItemButton selected={!!match} onClick={handleClick}>
-      <ListItemIcon>
-        <Icon>{icon}</Icon>
-      </ListItemIcon>
+      <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={label} />
     </ListItemButton>
   );
@@ -89,19 +90,19 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
           <Box flex={1}>
             <List component="nav">
               <ListItemLink
-                icon="Home"
+                icon={<Home />} 
                 label="Pagina Inicial"
                 to="/pagina-inicial"
                 onClick={smDown ? toggleDrawerOpen : undefined}
               />
               <ListItemLink
-                icon="Home"
+                icon={<Icon>Home</Icon>}
                 label="Users"
                 to="/users"
                 onClick={smDown ? toggleDrawerOpen : undefined}
               />
               <ListItemLink
-                icon="Home"
+                icon={<Icon>Home</Icon>}
                 label="Products"
                 to="/products"
                 onClick={smDown ? toggleDrawerOpen : undefined}
