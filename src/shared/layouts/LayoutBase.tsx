@@ -13,10 +13,16 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 interface ILayoutBase {
   children?: React.ReactNode;
   title: string;
+  barraDeFerramenta?: React.ReactNode;
 }
-export const LayoutBase: React.FC<ILayoutBase> = ({ children, title }) => {
+export const LayoutBase: React.FC<ILayoutBase> = ({
+  children,
+  title,
+  barraDeFerramenta,
+}) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'))
   const { toggleDrawerOpen } = useDrawerContext();
   return (
     <Box height="100%" display="flex" flexDirection="column" gap={1}>
@@ -34,10 +40,21 @@ export const LayoutBase: React.FC<ILayoutBase> = ({ children, title }) => {
             </Icon>
           </IconButton>
         )}
-        <Typography variant="h3">{title}</Typography>
+        <Typography
+          variant={smDown ? 'h5' : mdDown ? 'h4' : 'h3'}
+          whiteSpace="nowrap"
+          overflow="hidden"
+          textOverflow="ellipsis"
+        >
+          {title}
+        </Typography>
       </Box>
-      <Box>barra de ferramentas</Box>
-      <Box>{children}</Box>
+
+      {barraDeFerramenta && <Box>{barraDeFerramenta}</Box>}
+
+      <Box flex={1} overflow="auto">
+        {children}
+      </Box>
     </Box>
   );
 };
