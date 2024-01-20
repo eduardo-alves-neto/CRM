@@ -8,7 +8,7 @@ import { enqueueSnackbar } from "notistack";
 import { productsTypeResponse } from "./services/types";
 import { Card } from "../../shared/components/cards/Cards";
 import { LayoutBase } from "../../shared/layouts/LayoutBase";
-import { BarraFerramenta } from "../../shared/components";
+import { FerramentaDaListagem } from "../../shared/components";
 
 export default function products() {
   const [products, setproducts] = useState<productsTypeResponse[]>([]);
@@ -31,7 +31,7 @@ export default function products() {
   // console.log(products)
   return (
     <>
-      <LayoutBase title={"Produtos"} barraDeFerramenta={<BarraFerramenta/>}>
+      <LayoutBase title={"Produtos"} barraDeFerramenta={<FerramentaDaListagem/>}>
       
         <Box>
           <Card title="teste" description="dbihssjnd" image="" quantite={12} />

@@ -1,2 +1,2 @@
 export * from "./menu-drawer/MenuDrawer";
-export * from "./barra-de-ferramentas/BarraFerramenta";
+export * from "./FerramentaDaListagem/FerramentaDaListagem";
