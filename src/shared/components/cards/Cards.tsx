@@ -15,7 +15,7 @@ interface ICard {
 }
 export const  Card: React.FC<ICard> =({title, description,quantite})=> {
   return (
-    <Mediacard sx={{ maxWidth: 345 }}>
+    <Mediacard sx={{ maxWidth: 345, marginX:1 }}>
       <CardMedia
         sx={{ height: 140 }}
         image="/static/images/cards/contemplative-reptile.jpg"

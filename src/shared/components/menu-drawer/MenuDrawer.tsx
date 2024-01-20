@@ -13,14 +13,15 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { useDrawerContext } from "../../contexts";
+import { useAppThemeContext, useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import { Home } from "@mui/icons-material";
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 interface IListItemLink {
   children?: ReactNode;
   label: string;
-  icon: React.ReactElement; 
+  icon: React.ReactElement;
   to: string;
   onClick?: () => void;
 }
@@ -57,6 +58,7 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down("sm"));
   const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+  const { toggleTheme } = useAppThemeContext();
 
   return (
     <>
@@ -90,7 +92,7 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
           <Box flex={1}>
             <List component="nav">
               <ListItemLink
-                icon={<Home />} 
+                icon={<Home />}
                 label="Pagina Inicial"
                 to="/pagina-inicial"
                 onClick={smDown ? toggleDrawerOpen : undefined}
@@ -107,6 +109,18 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
                 to="/products"
                 onClick={smDown ? toggleDrawerOpen : undefined}
               />
+            </List>
+          </Box>
+          <Box>
+            <List component="nav">
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <Icon>
+                    <DarkModeIcon />
+                  </Icon>
+                </ListItemIcon>
+                <ListItemText primary="Alterar Tema" />
+              </ListItemButton>
             </List>
           </Box>
         </Box>
