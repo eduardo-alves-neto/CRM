@@ -1,5 +1,7 @@
 import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material";
 import { Add } from "@mui/icons-material";
+import { ModalProduto } from "../modalProdutos/modalProdutos";
+import { useState } from "react";
 
 interface IFerramentaDaListagemProps {
   textoDeBusca?: string;
@@ -19,6 +21,7 @@ export const FerramentaDaListagem: React.FC<IFerramentaDaListagemProps> = ({
   aoClicarEmNovo,
 }) => {
   const theme = useTheme();
+  const [modalAberto, setModalAberto] = useState(false);
   return (
     <Box
       height={theme.spacing(5)}
@@ -46,11 +49,19 @@ export const FerramentaDaListagem: React.FC<IFerramentaDaListagemProps> = ({
             color="primary"
             disableElevation
             endIcon={<Add />}
-            onClick={aoClicarEmNovo}
+            onClick={()=> setModalAberto(true)}
           >
             {textoBotaoNovo}
           </Button>
         )}
+         <ModalProduto
+        open={modalAberto}
+        onClose={() => setModalAberto(false)}
+        onSave={(produto) => {
+          // Lógica para salvar o novo produto
+          console.log("Novo produto:", produto);
+        }}
+      />
       </Box>
     </Box>
   );

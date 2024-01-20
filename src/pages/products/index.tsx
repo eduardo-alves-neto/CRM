@@ -20,7 +20,7 @@ export default function products() {
         const data = await productsTypeServices.get();
 
         setproducts(data);
-        // console.log(data)
+        console.log(data)
         return data;
       } catch (error) {
         enqueueSnackbar("Unable to obtain data", { variant: "error" });
@@ -28,13 +28,19 @@ export default function products() {
     },
   });
 
-  // console.log(products)
+  console.log(products)
   return (
     <>
-      <LayoutBase title={"Produtos"} barraDeFerramenta={<FerramentaDaListagem/>}>
+      <LayoutBase title={"Produtos"} barraDeFerramenta={<FerramentaDaListagem mostrarInputBusca/>}>
       
-        <Box>
-          <Card title="teste" description="dbihssjnd" image="" quantite={12} />
+        <Box sx={{ display: 'flex', flexWrap: 'wrap' , alignItems:'center', justifyContent:'center'}}>
+          {products &&(
+            products.map((produto)=>(
+              <Card title={produto.name} description={produto.description} price={produto.price}/>
+            ))
+          )
+
+          }
         </Box>
       </LayoutBase>
     </>

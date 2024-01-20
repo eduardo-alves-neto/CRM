@@ -17,6 +17,7 @@ import { useAppThemeContext, useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 import { Home } from "@mui/icons-material";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import InventoryIcon from '@mui/icons-material/Inventory';
 
 interface IListItemLink {
   children?: ReactNode;
@@ -104,7 +105,7 @@ export const MenuDrawer: React.FC<IMenuDrawerProps> = ({ children }) => {
                 onClick={smDown ? toggleDrawerOpen : undefined}
               />
               <ListItemLink
-                icon={<Icon>Home</Icon>}
+                icon={<Icon><InventoryIcon/></Icon>}
                 label="Products"
                 to="/products"
                 onClick={smDown ? toggleDrawerOpen : undefined}
