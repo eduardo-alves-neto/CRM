@@ -5,7 +5,7 @@ export const Dashboard = () => {
   return (
     <LayoutBase
       title={"Tela Inicial"}
-      barraDeFerramenta={<BarraFerramenta />}
+      barraDeFerramenta={<BarraFerramenta mostrarInputBusca />}
     ></LayoutBase>
   );
 };
