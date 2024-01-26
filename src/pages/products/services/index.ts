@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { productsTypeResponse } from './types';
+import { productsTypeRequest, productsTypeResponse } from './types';
 
 export class productsTypeServices {
   static async get(): Promise<productsTypeResponse[]> {
@@ -11,5 +11,14 @@ export class productsTypeServices {
       console.error('Erro na solicitação:', error);
       throw new Error('Falha ao obter os dados do usuário'); // Customize a mensagem de erro conforme necessário
     }
+  }
+
+  
+  static async create(values: productsTypeRequest): Promise<void> {
+    await axios.post('http://localhost:8800/products', values);
+  }
+
+  static async patch(values: productsTypeRequest): Promise<void> {
+    await axios.patch('http://localhost:8800/products', values);
   }
 }
