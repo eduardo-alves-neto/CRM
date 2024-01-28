@@ -55,7 +55,7 @@ export const PostUsers = () => {
   return (
     <>
       <LayoutBase title={"Novo Cliente"}>
-        <Box padding={4}>
+        <Box padding={10}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6} md={4}>

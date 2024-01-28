@@ -15,7 +15,7 @@ export default function Users() {
   const theme = useTheme();
 
   const { isLoading, refetch } = useQuery({
-    queryKey: ["/"],
+    queryKey: ["/users"],
     queryFn: async () => {
       try {
         const data = await UserTypeServices.get();
@@ -23,8 +23,12 @@ export default function Users() {
         setUsers(data);
         return data;
       } catch (error) {
-        enqueueSnackbar("Unable to obtain data", { variant: "error" });
-        return [];
+        const errorMessage =
+          String(error) || "Não foi possivel obter a lista de clientes"!;
+
+        enqueueSnackbar(errorMessage, {
+          variant: "error",
+        });
       }
     },
   });
@@ -47,13 +51,16 @@ export default function Users() {
       width: 150,
     },
   ];
-
   return (
     <>
       <LayoutBase
         title={"Clientes"}
         barraDeFerramenta={
-          <FerramentaDaListagem mostrarInputBusca rota="/users/create" />
+          <FerramentaDaListagem
+            mostrarInputBusca
+            rota="/users/create"
+            isloading={isLoading}
+          />
         }
       >
         <Box

@@ -12,10 +12,12 @@ interface IFerramentaDaListagemProps {
   mostrarBotaoNovo?: boolean;
   aoClicarEmNovo?: () => void;
   rota?: string;
+  isloading?: boolean;
 }
 
 export const FerramentaDaListagem: React.FC<IFerramentaDaListagemProps> = ({
   textoDeBusca = "",
+  isloading,
   mostrarInputBusca = false,
   aoMudarTextoDeBusca,
   textoBotaoNovo = "Novo",
@@ -51,6 +53,7 @@ export const FerramentaDaListagem: React.FC<IFerramentaDaListagemProps> = ({
           <Button
             variant="contained"
             color="primary"
+            disabled={isloading}
             disableElevation
             endIcon={<Add />}
             onClick={() => navigate(rota ?? '') }
