@@ -1,7 +1,29 @@
 import { Add } from "@mui/icons-material";
 import { Box, Button, Paper, useTheme } from "@mui/material";
 
-export const FerramentaDeDetalhes: React.FC = () => {
+interface IFerramentaDeDetalhesProps {
+  textoBotaoNovo?: string;
+  mostrarBotaoSalvar?:boolean;
+  mostrarBotaoApagar?:boolean;
+  mostrarBotaoEditar?:boolean;
+  isLoading?: boolean;
+
+  aoClicarEmNovo?:()=> void;
+  aoClicarEmEditar?:()=> void;
+  aoClicarEmApagar?:()=> void;
+}
+
+export const FerramentaDeDetalhes: React.FC<IFerramentaDeDetalhesProps> = ({
+  textoBotaoNovo = "Novo",
+  mostrarBotaoSalvar = true,
+  mostrarBotaoApagar = true,
+  mostrarBotaoEditar = true,
+  isLoading,
+
+  aoClicarEmNovo,
+  aoClicarEmEditar,
+  aoClicarEmApagar,
+}) => {
   const theme = useTheme();
   return (
     <Box

@@ -1,15 +1,34 @@
 import axios from 'axios';
-import { userTypeResponse } from './types';
+import { userTypeRequest, userTypeResponse } from './types';
 
 export class UserTypeServices {
+
+
   static async get(): Promise<userTypeResponse[]> {
-    try {
-      const { data } = await axios.get('http://localhost:8800/users'); // Certifique-se de que este é o caminho correto para a sua API.
-      return data;
-    } catch (error) {
-      // Adicione um tratamento de erro adequado aqui
-      console.error('Erro na solicitação:', error);
-      throw new Error('Falha ao obter os dados do usuário'); // Customize a mensagem de erro conforme necessário
-    }
+    const { data } = await axios.get('http://localhost:8800/users');
+    return data;
+  }
+
+  static async getOne(guid: string): Promise<userTypeResponse> {
+    const { data } = await axios.get(`http://localhost:8800/users/${guid}`);
+    return data;
+  }
+
+  static async create(values: userTypeRequest): Promise<void> {
+    await axios.post('http://localhost:8800/users', values);
+  }
+
+  static async update(values: userTypeRequest): Promise<void> {
+    await axios.put('http://localhost:8800/users', values);
+  }
+
+  static async patch(values: userTypeRequest): Promise<void> {
+    await axios.patch('http://localhost:8800/users', values);
+  }
+
+  static async delete(guid: string): Promise<void> {
+    await axios.delete(`http://localhost:8800/users/${guid}`, {
+      data: { guid: guid },
+    });
   }
 }
